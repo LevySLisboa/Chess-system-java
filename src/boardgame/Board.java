@@ -41,10 +41,23 @@ public class Board {
         if(thereIsAPiece(position)){
             throw new BoardException("Já existe uma peça na posição: "+position+".");
         }
-
         pieces[position.getRows()][position.getColumns()] = piece;
         piece.position = position;
     }
+
+    public Piece removePiece(Position position){
+        if(!positionExists(position)){
+            throw new BoardException("Posição fora do tabuleiro");
+        }
+        if (piece(position)==null){
+            return null;
+        }
+        Piece aux = piece(position);
+        aux.position = null;
+        pieces[position.getRows()][position.getColumns()] = null;
+        return aux;
+    }
+
     private boolean positionExists(int row,int column){
         return row >= 0 && row < rows && column >=0 && column < columns;
     }
