@@ -38,11 +38,7 @@ public class Main {
                 if(capturedPiece != null){
                     captured.add(capturedPiece);
                 }
-            }catch (ChessException e){
-                System.out.println(e.getMessage());
-                System.out.println("Aperte Enter para continuar");
-                sc.nextLine();
-            }catch (InputMismatchException e){
+            }catch (ChessException | InputMismatchException e){
                 System.out.println(e.getMessage());
                 System.out.println("Aperte Enter para continuar");
                 sc.nextLine();
