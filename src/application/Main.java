@@ -50,5 +50,6 @@ public class Main {
         }
         UI.clearScreen();
         UI.printMatch(chessMatch,captured);
+        sc.close();
     }
 }
