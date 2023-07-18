@@ -5,6 +5,7 @@ import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 
+import java.security.InvalidParameterException;
 import java.util.*;
 
 public class Main {
@@ -38,7 +39,12 @@ public class Main {
                 if(capturedPiece != null){
                     captured.add(capturedPiece);
                 }
-            }catch (ChessException | InputMismatchException e){
+
+                if(chessMatch.getPromoted()!=null){
+                    System.out.print("Digite a peça para promoção (B/N/R/Q): ");
+                    chessMatch.replacePromotedPiece(sc.nextLine());
+                }
+            }catch (ChessException | InputMismatchException | InvalidParameterException e){
                 System.out.println(e.getMessage());
                 System.out.println("Aperte Enter para continuar");
                 sc.nextLine();
