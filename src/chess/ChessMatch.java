@@ -5,7 +5,6 @@ import boardgame.Piece;
 import boardgame.Position;
 import chess.pieces.*;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -113,7 +112,7 @@ public class ChessMatch {
             throw new IllegalStateException("Não tem peça para ser promovida");
         }
         if(!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")){
-            throw new InvalidParameterException("Tipo de promoção invalida");
+            return promoted;
         }
 
         Position pos = promoted.getChessPosition().toPosition();
@@ -304,7 +303,7 @@ public class ChessMatch {
         currantPlayer = (currantPlayer == Color.WHITE)? Color.BLACK : Color.WHITE;
     }
     private void initialSetup() {
-
+        placeNewPiece('e',2,new Pawn(board,Color.WHITE,this));
         placeNewPiece('e',1,new King(board,Color.WHITE,this));
         placeNewPiece('a',1,new Rook(board,Color.WHITE));
         placeNewPiece('h',1,new Rook(board,Color.WHITE));
@@ -312,7 +311,7 @@ public class ChessMatch {
         placeNewPiece('b',2,new Pawn(board,Color.WHITE,this));
         placeNewPiece('c',2,new Pawn(board,Color.WHITE,this));
         placeNewPiece('d',2,new Pawn(board,Color.WHITE,this));
-        placeNewPiece('e',2,new Pawn(board,Color.WHITE,this));
+
         placeNewPiece('f',2,new Pawn(board,Color.WHITE,this));
         placeNewPiece('g',2,new Pawn(board,Color.WHITE,this));
         placeNewPiece('h',2,new Pawn(board,Color.WHITE,this));
@@ -329,8 +328,7 @@ public class ChessMatch {
         placeNewPiece('e',7,new Pawn(board,Color.BLACK,this));
         placeNewPiece('f',7,new Pawn(board,Color.BLACK,this));
         placeNewPiece('g',7,new Pawn(board,Color.BLACK,this));
-        placeNewPiece('h',7,new Pawn(board,Color.BLACK,this));
-        placeNewPiece('e',8,new King(board,Color.BLACK,this));
+
         placeNewPiece('a',8,new Rook(board,Color.BLACK));
         placeNewPiece('h',8,new Rook(board,Color.BLACK));
         placeNewPiece('c',8,new Bishop(board,Color.BLACK));
@@ -338,7 +336,8 @@ public class ChessMatch {
         placeNewPiece('b',8,new Knight(board,Color.BLACK));
         placeNewPiece('g',8,new Knight(board,Color.BLACK));
         placeNewPiece('d',8,new Queen(board,Color.BLACK));
-
+        placeNewPiece('h',7,new Pawn(board,Color.BLACK,this));
+        placeNewPiece('e',8,new King(board,Color.BLACK,this));
 
     }
 }
